@@ -1,0 +1,1078 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chate Student Hub</title>
+
+<style>
+:root {
+  --navy: #10264a;
+  --blue: #2457a7;
+  --light: #f3f6fb;
+  --white: #ffffff;
+  --text: #263449;
+  --muted: #64748b;
+  --border: #e0e7f0;
+  --green: #16845b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  background: var(--navy);
+  color: white;
+  padding: 15px 6%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 3px 12px #10264a20;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  font-size: 28px;
+}
+
+.brand h2 {
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.brand small {
+  color: #c7d7f1;
+  font-size: 11px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  font-size: 14px;
+  color: #e5edfa;
+}
+
+nav a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.menu-btn {
+  display: none;
+  color: white;
+  background: transparent;
+  border: 1px solid #ffffff60;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.container {
+  max-width: 1150px;
+  width: 90%;
+  margin: auto;
+}
+
+.hero {
+  background: linear-gradient(130deg, #10264a, #2457a7);
+  color: white;
+  padding: 75px 0 85px;
+}
+
+.hero-content {
+  max-width: 740px;
+}
+
+.tag {
+  display: inline-block;
+  background: #ffffff18;
+  border: 1px solid #ffffff40;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.15;
+  margin-bottom: 17px;
+}
+
+.hero p {
+  color: #dbe7fb;
+  max-width: 600px;
+  margin-bottom: 25px;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 9px;
+  padding: 11px 18px;
+  font-weight: bold;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-white {
+  background: white;
+  color: var(--navy);
+}
+
+.btn-blue {
+  background: var(--blue);
+  color: white;
+}
+
+.btn-light {
+  background: #eaf0fa;
+  color: var(--navy);
+}
+
+.btn-green {
+  background: var(--green);
+  color: white;
+}
+
+.section {
+  padding: 55px 0;
+}
+
+.section-title {
+  margin-bottom: 23px;
+}
+
+.section-title h2 {
+  font-size: 27px;
+  color: var(--navy);
+}
+
+.section-title p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  padding: 10px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 22px;
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 7px;
+  background: transparent;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 21px;
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px #10264a10;
+}
+
+.class-card {
+  text-align: left;
+  color: var(--text);
+  width: 100%;
+  border: 1px solid var(--border);
+  font-weight: normal;
+}
+
+.class-card .emoji {
+  font-size: 27px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.class-card h3 {
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.class-card p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.class-card.active {
+  border: 2px solid var(--blue);
+  background: #edf4ff;
+}
+
+.quick-card .emoji {
+  font-size: 28px;
+}
+
+.quick-card h3 {
+  color: var(--navy);
+  margin: 7px 0;
+}
+
+.quick-card p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 13px;
+}
+
+.subject-label {
+  display: inline-block;
+  background: #eaf0fa;
+  color: var(--blue);
+  font-size: 12px;
+  padding: 4px 9px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.resource-card h3 {
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.resource-card p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.resource-card .btn {
+  font-size: 13px;
+}
+
+.notice {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.notice:last-child {
+  border-bottom: none;
+}
+
+.notice h3 {
+  font-size: 16px;
+  color: var(--navy);
+}
+
+.notice p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.notice small {
+  color: var(--muted);
+}
+
+.notice-type {
+  font-size: 11px;
+  color: var(--blue);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 22px;
+}
+
+.quiz-question {
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.quiz-option {
+  display: block;
+  padding: 11px;
+  margin: 9px 0;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.quiz-option:has(input:checked) {
+  border-color: var(--blue);
+  background: #edf4ff;
+}
+
+.quiz-option input {
+  margin-right: 9px;
+}
+
+#quizResult {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.form-field {
+  margin-bottom: 14px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px;
+  background: white;
+}
+
+.helper {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+footer {
+  background: var(--navy);
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 13px;
+  color: #c7d7f1;
+  margin-top: 5px;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 20px 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .menu-btn {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--navy);
+    padding: 18px 6%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 55px 0;
+  }
+
+  .section {
+    padding: 38px 0;
+  }
+
+  .section-title h2 {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 420px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brand h2 {
+    font-size: 16px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <a class="brand" href="#home">
+      <span class="brand-icon">🎓</span>
+      <div>
+        <h2>CHATE STUDENT HUB</h2>
+        <small>LEARN • PRACTISE • PROGRESS</small>
+      </div>
+    </a>
+
+    <button class="menu-btn" id="menuBtn"
+      aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#classes">Classes</a>
+      <a href="#resources">Study Material</a>
+      <a href="#tests">Practice Tests</a>
+      <a href="#notices">Notices</a>
+      <a href="#timetable">Timetable</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <span class="tag">YOUR LEARNING STARTS HERE</span>
+      <h1>Your learning,<br>all in one place.</h1>
+      <p>
+        Explore study resources, practise MCQs and organise your
+        revision with a simple student learning portal.
+      </p>
+      <a class="btn btn-white" href="#classes">Explore Classes →</a>
+    </div>
+  </section>
+
+  <!-- CLASSES -->
+  <section class="section" id="classes">
+    <div class="container">
+      <div class="section-title">
+        <h2>Choose Your Class 📚</h2>
+        <p>Select a class to explore its learning resources.</p>
+      </div>
+
+      <div class="search-box">
+        <span>🔎</span>
+        <input id="searchInput"
+          type="search"
+          placeholder="Search class, subject or resource..."
+          aria-label="Search learning resources">
+      </div>
+
+      <div class="grid" id="classGrid">
+        <button class="card class-card" data-class="5">
+          <span class="emoji">📘</span>
+          <h3>5th Standard</h3>
+          <p>Explore learning resources</p>
+        </button>
+
+        <button class="card class-card" data-class="6">
+          <span class="emoji">📗</span>
+          <h3>6th Standard</h3>
+          <p>Explore learning resources</p>
+        </button>
+
+        <button class="card class-card" data-class="7">
+          <span class="emoji">📙</span>
+          <h3>7th Standard</h3>
+          <p>Explore learning resources</p>
+        </button>
+
+        <button class="card class-card" data-class="8">
+          <span class="emoji">📕</span>
+          <h3>8th Standard</h3>
+          <p>Explore learning resources</p>
+        </button>
+
+        <button class="card class-card" data-class="9">
+          <span class="emoji">📝</span>
+          <h3>9th Standard</h3>
+          <p>Explore learning resources</p>
+        </button>
+
+        <button class="card class-card" data-class="10">
+          <span class="emoji">🎯</span>
+          <h3>10th Standard</h3>
+          <p>Board exam preparation</p>
+        </button>
+
+        <button class="card class-card" data-class="11">
+          <span class="emoji">🧪</span>
+          <h3>11th Standard</h3>
+          <p>Choose your stream and subjects</p>
+        </button>
+
+        <button class="card class-card" data-class="12">
+          <span class="emoji">🚀</span>
+          <h3>12th Standard</h3>
+          <p>Board exams and entrance practice</p>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK ACCESS -->
+  <section class="section" style="background:#eaf0fa">
+    <div class="container">
+      <div class="section-title">
+        <h2>Quick Access ⚡</h2>
+        <p>Get started with your learning.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card quick-card">
+          <span class="emoji">📖</span>
+          <h3>Study Notes</h3>
+          <p>Find notes and revision materials.</p>
+          <a href="#resources" class="btn btn-blue">View Resources</a>
+        </div>
+
+        <div class="card quick-card">
+          <span class="emoji">🧠</span>
+          <h3>Practice Tests</h3>
+          <p>Test your understanding with MCQs.</p>
+          <a href="#tests" class="btn btn-blue">Start Practice</a>
+        </div>
+
+        <div class="card quick-card">
+          <span class="emoji">📢</span>
+          <h3>Latest Notices</h3>
+          <p>See demonstration announcements.</p>
+          <a href="#notices" class="btn btn-blue">View Notices</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="section" id="resources">
+    <div class="container">
+      <div class="section-title">
+        <h2>Study Resources 📚</h2>
+        <p id="resourceDescription">
+          Sample resources for demonstration. Select a class above.
+        </p>
+      </div>
+
+      <div class="grid" id="resourceGrid"></div>
+      <p id="resourceEmpty" class="empty hidden">
+        No matching resources. Try another search or class.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="section" id="tests" style="background:#eaf0fa">
+    <div class="container">
+      <div class="section-title">
+        <h2>Practice Test 🧠</h2>
+        <p>Try this sample general knowledge quiz.</p>
+      </div>
+
+      <div class="card">
+        <div id="quizArea"></div>
+        <button class="btn btn-blue" id="submitQuiz">
+          Submit Answers
+        </button>
+        <button class="btn btn-light" id="resetQuiz">
+          Try Again
+        </button>
+        <p id="quizResult" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICES AND TIMETABLE -->
+  <section class="section" id="notices">
+    <div class="container">
+      <div class="two-column">
+        <div class="card">
+          <div class="section-title">
+            <h2>Notice Board 📢</h2>
+            <p>Demonstration notices, not official announcements.</p>
+          </div>
+          <div id="noticeList"></div>
+        </div>
+
+        <div class="card" id="timetable">
+          <div class="section-title">
+            <h2>Exam Timetable 🗓️</h2>
+            <p>Example schedule for website demonstration.</p>
+          </div>
+
+          <div class="notice">
+            <span class="notice-type">Example</span>
+            <h3>Mathematics</h3>
+            <p>Sample date: 10 November</p>
+            <small>Replace with an approved timetable.</small>
+          </div>
+
+          <div class="notice">
+            <span class="notice-type">Example</span>
+            <h3>Science</h3>
+            <p>Sample date: 12 November</p>
+            <small>Replace with an approved timetable.</small>
+          </div>
+
+          <div class="notice">
+            <span class="notice-type">Example</span>
+            <h3>English</h3>
+            <p>Sample date: 14 November</p>
+            <small>Replace with an approved timetable.</small>
+          </div>
+
+          <p class="helper">
+            These dates are fictional examples, not Chate exam dates.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO NOTICE FORM -->
+  <section class="section" id="demoAdmin">
+    <div class="container">
+      <div class="card">
+        <div class="section-title">
+          <h2>Demo Notice Manager ⚙️</h2>
+          <p>
+            Add a temporary notice to this browser's current page.
+          </p>
+        </div>
+
+        <form id="noticeForm">
+          <div class="form-field">
+            <label for="noticeTitle">Notice title</label>
+            <input id="noticeTitle" maxlength="100"
+              required placeholder="e.g. Revision workshop">
+          </div>
+
+          <div class="form-field">
+            <label for="noticeMessage">Notice details</label>
+            <input id="noticeMessage" maxlength="300"
+              required placeholder="Enter notice details">
+          </div>
+
+          <button class="btn btn-blue" type="submit">
+            Add Demo Notice
+          </button>
+        </form>
+
+        <p class="helper">
+          Demo only: there is no staff login or database. Notices added
+          here are not shared with other users and disappear on reload.
+          Do not use this form for confidential or official information.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <h3>🎓 Chate Student Hub</h3>
+    <p>A student learning portal concept.</p>
+    <p>Independent demo project — not an official Chate website.</p>
+    <p>© <span id="year"></span> Student Hub Demo</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+
+// Sample resources for demonstration.
+// Replace these with authorised, real learning materials.
+const resources = [];
+
+for (let cls = 5; cls <= 10; cls++) {
+  resources.push({
+    class: String(cls),
+    subject: "Mathematics",
+    title: "Mathematics Revision",
+    description: "Sample revision resource for this class."
+  });
+
+  resources.push({
+    class: String(cls),
+    subject: "Science",
+    title: "Science Practice",
+    description: "Sample science learning resource."
+  });
+}
+
+for (let cls of ["11", "12"]) {
+  for (let subject of ["Physics", "Chemistry", "Mathematics"]) {
+    resources.push({
+      class: cls,
+      subject,
+      title: subject + " Revision",
+      description: "Sample revision resource for " + subject + "."
+    });
+  }
+}
+
+let selectedClass = "";
+let searchTerm = "";
+
+const classCards = document.querySelectorAll(".class-card");
+const resourceGrid = document.getElementById("resourceGrid");
+const resourceEmpty = document.getElementById("resourceEmpty");
+const resourceDescription =
+  document.getElementById("resourceDescription");
+const searchInput = document.getElementById("searchInput");
+
+// CLASS SELECTION
+classCards.forEach(card => {
+  card.addEventListener("click", () => {
+    selectedClass = card.dataset.class;
+
+    classCards.forEach(item => item.classList.remove("active"));
+    card.classList.add("active");
+
+    resourceDescription.textContent =
+      "Showing sample resources for " + selectedClass +
+      "th Standard.";
+
+    renderResources();
+
+    document.getElementById("resources").scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+});
+
+// SEARCH
+searchInput.addEventListener("input", event => {
+  searchTerm = event.target.value.trim().toLowerCase();
+  renderResources();
+});
+
+// RESOURCE DISPLAY
+function renderResources() {
+  resourceGrid.replaceChildren();
+
+  const filtered = resources.filter(item => {
+    const matchesClass =
+      !selectedClass || item.class === selectedClass;
+
+    const text = (
+      item.title + " " + item.subject + " " +
+      item.description + " Class " + item.class
+    ).toLowerCase();
+
+    return matchesClass && text.includes(searchTerm);
+  });
+
+  filtered.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "card resource-card";
+
+    const label = document.createElement("span");
+    label.className = "subject-label";
+    label.textContent = item.subject;
+
+    const title = document.createElement("h3");
+    title.textContent = item.title;
+
+    const description = document.createElement("p");
+    description.textContent =
+      "Class " + item.class + " • " + item.description;
+
+    const button = document.createElement("button");
+    button.className = "btn btn-light";
+    button.textContent = "View Resource";
+
+    button.addEventListener("click", () => {
+      alert(
+        "This is sample content. Add an approved PDF or resource " +
+        "link to make this button open real learning material."
+      );
+    });
+
+    card.append(label, title, description, button);
+    resourceGrid.appendChild(card);
+  });
+
+  resourceEmpty.classList.toggle("hidden", filtered.length > 0);
+}
+
+// SAMPLE QUIZ
+const questions = [
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Earth", "Mars", "Venus", "Jupiter"],
+    answer: 1
+  },
+  {
+    question: "What is 12 × 8?",
+    options: ["86", "92", "96", "108"],
+    answer: 2
+  },
+  {
+    question: "Which gas do plants absorb during photosynthesis?",
+    options: ["Oxygen", "Nitrogen", "Hydrogen", "Carbon dioxide"],
+    answer: 3
+  },
+  {
+    question: "What is the chemical formula of water?",
+    options: ["CO2", "H2O", "O2", "NaCl"],
+    answer: 1
+  },
+  {
+    question: "How many sides does a hexagon have?",
+    options: ["Five", "Six", "Seven", "Eight"],
+    answer: 1
+  }
+];
+
+const quizArea = document.getElementById("quizArea");
+const quizResult = document.getElementById("quizResult");
+const submitQuiz = document.getElementById("submitQuiz");
+
+function renderQuiz() {
+  quizArea.replaceChildren();
+  quizResult.textContent = "";
+
+  questions.forEach((q, index) => {
+    const section = document.createElement("div");
+
+    const heading = document.createElement("p");
+    heading.className = "quiz-question";
+    heading.textContent = (index + 1) + ". " + q.question;
+    section.appendChild(heading);
+
+    q.options.forEach((option, optionIndex) => {
+      const label = document.createElement("label");
+      label.className = "quiz-option";
+
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "question-" + index;
+      input.value = optionIndex;
+
+      const text = document.createTextNode(option);
+      label.append(input, text);
+      section.appendChild(label);
+    });
+
+    quizArea.appendChild(section);
+  });
+
+  submitQuiz.disabled = false;
+}
+
+submitQuiz.addEventListener("click", () => {
+  let score = 0;
+  let unanswered = 0;
+
+  questions.forEach((q, index) => {
+    const selected = document.querySelector(
+      'input[name="question-' + index + '"]:checked'
+    );
+
+    if (!selected) {
+      unanswered++;
+    } else if (Number(selected.value) === q.answer) {
+      score++;
+    }
+  });
+
+  if (unanswered > 0) {
+    quizResult.textContent =
+      "Please answer all " + questions.length +
+      " questions. " + unanswered + " remaining.";
+    return;
+  }
+
+  quizResult.textContent =
+    "Your score: " + score + "/" + questions.length +
+    ". " + (score === questions.length
+      ? "Excellent work!"
+      : "Keep practising and try again!");
+
+  submitQuiz.disabled = true;
+});
+
+document.getElementById("resetQuiz").addEventListener("click", () => {
+  renderQuiz();
+});
+
+renderQuiz();
+
+// DEMONSTRATION NOTICES
+const notices = [
+  {
+    title: "Welcome to Student Hub",
+    message: "Explore the sample study resources on this website.",
+    date: "Demo announcement"
+  },
+  {
+    title: "Revision Reminder",
+    message: "Make a regular study plan and practise questions.",
+    date: "Demo announcement"
+  }
+];
+
+const noticeList = document.getElementById("noticeList");
+
+function renderNotices() {
+  noticeList.replaceChildren();
+
+  notices.forEach(notice => {
+    const article = document.createElement("article");
+    article.className = "notice";
+
+    const type = document.createElement("span");
+    type.className = "notice-type";
+    type.textContent = notice.date;
+
+    const title = document.createElement("h3");
+    title.textContent = notice.title;
+
+    const message = document.createElement("p");
+    message.textContent = notice.message;
+
+    article.append(type, title, message);
+    noticeList.appendChild(article);
+  });
+}
+
+renderNotices();
+
+// TEMPORARY NOTICE FORM
+document.getElementById("noticeForm").addEventListener(
+  "submit", event => {
+    event.preventDefault();
+
+    const title = document.getElementById("noticeTitle")
+      .value.trim();
+
+    const message = document.getElementById("noticeMessage")
+      .value.trim();
+
+    if (!title || !message) return;
+
+    notices.unshift({
+      title,
+      message,
+      date: "Temporary demo notice"
+    });
+
+    renderNotices();
+    event.target.reset();
+
+    document.getElementById("notices").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+);
+
+// MOBILE NAVIGATION
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
+
+menuBtn.addEventListener("click", () => {
+  const isOpen = nav.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(isOpen));
+});
+
+nav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+  });
+});
+
+// FOOTER YEAR
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+// INITIAL DISPLAY
+renderResources();
+</script>
+
+</body>
+</html>
